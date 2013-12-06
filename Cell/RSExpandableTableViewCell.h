@@ -13,16 +13,21 @@
 /**
  *  Transform's m34 for content view.
  */
-@property (nonatomic, assign) CGFloat contentViewTransform_m34; // 0 by default.
+@property (nonatomic, assign) CGFloat contentViewTransform_m34; // 1.0 / 1000.0 by default.
 
 /**
  *  Rotation angle on y axis for content view.
  */
-@property (nonatomic, assign) CGFloat contentViewRotationAngle_yAxis; // 0 by default.
+@property (nonatomic, assign) CGFloat contentViewRotationAngle_yAxis; // 10 degrees by default.
 
 /**
  *  EdgeInsets for content view.
  */
-@property (nonatomic, assign) UIEdgeInsets contentViewEdgeInsets; // UIEdgeInsetsZero by default.
+@property (nonatomic, assign) UIEdgeInsets contentViewEdgeInsets; // UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f) by default.
+
+/**
+ *  Extended height for expandable part.
+ */
+@property (nonatomic, assign) CGFloat extendedHeight; // 40.0f by default.
 
 @end

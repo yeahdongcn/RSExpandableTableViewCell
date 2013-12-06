@@ -10,6 +10,24 @@
 
 @implementation RSExpandableTableViewCell
 
+/**
+ *  Degrees to Radians
+ *
+ *  @param degrees Input degrees
+ *
+ *  @return Output radians
+ */
+#define DegreesToRadians( degrees ) ( ( degrees ) / 180.0 * M_PI )
+
+/**
+ *  Radians to Degrees
+ *
+ *  @param radians Input radians
+ *
+ *  @return Output degrees
+ */
+#define RadiansToDegrees( radians ) ( ( radians ) * ( 180.0 / M_PI ) )
+
 - (void)__init
 {
     [self addObserver:self forKeyPath:@"contentView" options:NSKeyValueObservingOptionInitial context:NULL];
@@ -18,12 +36,38 @@
     selectedBackgroundView.backgroundColor = [UIColor clearColor];
     selectedBackgroundView.layer.masksToBounds = YES;
     self.selectedBackgroundView = selectedBackgroundView;
+    
+    self.extendedHeight = 40.0f;
+    
+    self.contentViewTransform_m34 = 1.0f / 1000.0f;
+    
+    self.contentViewRotationAngle_yAxis = DegreesToRadians(10);
+    
+    self.contentViewEdgeInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
+}
+
+- (void)setContentViewTransform_m34:(CGFloat)contentViewTransform_m34
+{
+    if (_contentViewTransform_m34 != contentViewTransform_m34) {
+        CATransform3D transform = CATransform3DIdentity;
+        transform.m34 = contentViewTransform_m34;
+        self.layer.transform = transform;
+    }
+    _contentViewTransform_m34 = contentViewTransform_m34;
+}
+
+- (void)setContentViewRotationAngle_yAxis:(CGFloat)contentViewRotationAngle_yAxis
+{
+    if (_contentViewRotationAngle_yAxis != contentViewRotationAngle_yAxis) {
+        self.layer.transform = CATransform3DRotate(self.layer.transform, contentViewRotationAngle_yAxis, 0.0f, 1.0f, 0.0f);
+    }
+    _contentViewRotationAngle_yAxis = contentViewRotationAngle_yAxis;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if ([keyPath isEqualToString:@"contentView"]) {
-        self.contentView.layer.borderWidth = 1.0f;
+        self.contentView.layer.backgroundColor = [[UIColor lightGrayColor] CGColor];
     }
 }
 
@@ -64,10 +108,10 @@
 - (void)setFrame:(CGRect)frame
 {
     CGRect rect = frame;
-    rect.origin.x += 5;
-    rect.origin.y += 5;
-    rect.size.height += 40;
-    rect.size.width -= 10;
+    rect.origin.x += self.contentViewEdgeInsets.left;
+    rect.origin.y += self.contentViewEdgeInsets.top;
+    rect.size.height -= self.contentViewEdgeInsets.top + self.contentViewEdgeInsets.bottom;
+    rect.size.width -= self.contentViewEdgeInsets.left + self.contentViewEdgeInsets.right;
     [super setFrame:rect];
 }
 
