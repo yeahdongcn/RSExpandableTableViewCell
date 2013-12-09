@@ -30,16 +30,21 @@
 
 - (void)__init
 {
-    [self addObserver:self forKeyPath:@"contentView" options:NSKeyValueObservingOptionInitial context:NULL];
+    [self addObserver:self forKeyPath:@"textLabel" options:NSKeyValueObservingOptionInitial context:NULL];
+    
+    UIView *backgroundView = [[UIView alloc] init];
+    backgroundView.layer.backgroundColor = [[UIColor lightGrayColor] CGColor];
+    backgroundView.layer.masksToBounds = YES;
+    self.backgroundView = backgroundView;
     
     UIView *selectedBackgroundView = [[UIView alloc] init];
-    selectedBackgroundView.backgroundColor = [UIColor clearColor];
+    selectedBackgroundView.layer.backgroundColor = [[UIColor grayColor] CGColor];
     selectedBackgroundView.layer.masksToBounds = YES;
     self.selectedBackgroundView = selectedBackgroundView;
     
     self.extendedHeight = 40.0f;
     
-    self.contentViewTransform_m34 = 1.0f / 1000.0f;
+    self.contentViewTransform_m34 = 1.0f / 850.0f;
     
     self.contentViewRotationAngle_yAxis = DegreesToRadians(10);
     
@@ -66,8 +71,8 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if ([keyPath isEqualToString:@"contentView"]) {
-        self.contentView.layer.backgroundColor = [[UIColor lightGrayColor] CGColor];
+    if ([keyPath isEqualToString:@"textLabel"]) {
+        self.textLabel.backgroundColor = [UIColor clearColor];
     }
 }
 
@@ -95,7 +100,7 @@
 
 - (void)dealloc
 {
-    [self removeObserver:self forKeyPath:@"contentView"];
+    [self removeObserver:self forKeyPath:@"textLabel"];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
