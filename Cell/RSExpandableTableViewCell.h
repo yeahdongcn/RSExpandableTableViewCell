@@ -13,7 +13,7 @@
 /**
  *  Transform's m34 for content view.
  */
-@property (nonatomic, assign) CGFloat contentViewTransform_m34; // 1.0 / 1000.0 by default.
+@property (nonatomic, assign) CGFloat contentViewTransform_m34; // -1.0 / 850.0 by default.
 
 /**
  *  Rotation angle on y axis for content view.
@@ -29,5 +29,10 @@
  *  Extended height for expandable part.
  */
 @property (nonatomic, assign) CGFloat extendedHeight; // 40.0f by default.
+
+/**
+ *  Covered height for itself.
+ */
+@property (nonatomic, assign) CGFloat coveredHeight; // 40.0f by default.
 
 @end

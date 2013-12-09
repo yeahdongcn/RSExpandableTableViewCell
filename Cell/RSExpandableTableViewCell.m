@@ -32,6 +32,8 @@
 {
     [self addObserver:self forKeyPath:@"textLabel" options:NSKeyValueObservingOptionInitial context:NULL];
     
+    [self addObserver:self forKeyPath:@"contentView" options:NSKeyValueObservingOptionInitial context:NULL];
+    
     UIView *backgroundView = [[UIView alloc] init];
     backgroundView.layer.backgroundColor = [[UIColor lightGrayColor] CGColor];
     backgroundView.layer.masksToBounds = YES;
@@ -42,9 +44,11 @@
     selectedBackgroundView.layer.masksToBounds = YES;
     self.selectedBackgroundView = selectedBackgroundView;
     
+    self.coveredHeight = 40.0f;
+    
     self.extendedHeight = 40.0f;
     
-    self.contentViewTransform_m34 = 1.0f / 850.0f;
+    self.contentViewTransform_m34 = -1.0f / 850.0f;
     
     self.contentViewRotationAngle_yAxis = DegreesToRadians(10);
     
@@ -73,6 +77,8 @@
 {
     if ([keyPath isEqualToString:@"textLabel"]) {
         self.textLabel.backgroundColor = [UIColor clearColor];
+    } else if ([keyPath isEqualToString:@"contentView"]) {
+        self.contentView.layer.borderWidth = 1;
     }
 }
 
@@ -101,6 +107,7 @@
 - (void)dealloc
 {
     [self removeObserver:self forKeyPath:@"textLabel"];
+    [self removeObserver:self forKeyPath:@"contentView"];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -115,7 +122,7 @@
     CGRect rect = frame;
     rect.origin.x += self.contentViewEdgeInsets.left;
     rect.origin.y += self.contentViewEdgeInsets.top;
-    rect.size.height -= self.contentViewEdgeInsets.top + self.contentViewEdgeInsets.bottom;
+    rect.size.height -= self.contentViewEdgeInsets.top + self.contentViewEdgeInsets.bottom - self.coveredHeight;
     rect.size.width -= self.contentViewEdgeInsets.left + self.contentViewEdgeInsets.right;
     [super setFrame:rect];
 }
