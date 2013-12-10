@@ -22,7 +22,7 @@
 		D07CA52018502B9C00F33C3A /* RSExpandableTableViewCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CA51F18502B9C00F33C3A /* RSExpandableTableViewCellTests.m */; };
 		D07CA52E18502E4E00F33C3A /* RSExpandableTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CA52D18502E4E00F33C3A /* RSExpandableTableViewCell.m */; };
 		D07CA53118505CF300F33C3A /* RSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CA53018505CF300F33C3A /* RSTableViewController.m */; };
-		D07CA534185071D700F33C3A /* UITableViewCell+HitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CA533185071D700F33C3A /* UITableViewCell+HitTest.m */; };
+		D0CC23821856F48F00F17B62 /* RSExpandableTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0CC23811856F48F00F17B62 /* RSExpandableTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +57,8 @@
 		D07CA52D18502E4E00F33C3A /* RSExpandableTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSExpandableTableViewCell.m; sourceTree = "<group>"; };
 		D07CA52F18505CF300F33C3A /* RSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSTableViewController.h; sourceTree = "<group>"; };
 		D07CA53018505CF300F33C3A /* RSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSTableViewController.m; sourceTree = "<group>"; };
-		D07CA532185071D700F33C3A /* UITableViewCell+HitTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+HitTest.h"; sourceTree = "<group>"; };
-		D07CA533185071D700F33C3A /* UITableViewCell+HitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+HitTest.m"; sourceTree = "<group>"; };
+		D0CC23801856F48F00F17B62 /* RSExpandableTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSExpandableTableView.h; sourceTree = "<group>"; };
+		D0CC23811856F48F00F17B62 /* RSExpandableTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSExpandableTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,10 +162,10 @@
 		D07CA52B18502E3300F33C3A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				D07CA532185071D700F33C3A /* UITableViewCell+HitTest.h */,
-				D07CA533185071D700F33C3A /* UITableViewCell+HitTest.m */,
 				D07CA52C18502E4E00F33C3A /* RSExpandableTableViewCell.h */,
 				D07CA52D18502E4E00F33C3A /* RSExpandableTableViewCell.m */,
+				D0CC23801856F48F00F17B62 /* RSExpandableTableView.h */,
+				D0CC23811856F48F00F17B62 /* RSExpandableTableView.m */,
 			);
 			path = Cell;
 			sourceTree = SOURCE_ROOT;
@@ -268,11 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0CC23821856F48F00F17B62 /* RSExpandableTableView.m in Sources */,
 				D07CA50118502B9C00F33C3A /* main.m in Sources */,
 				D07CA50518502B9C00F33C3A /* RSAppDelegate.m in Sources */,
 				D07CA53118505CF300F33C3A /* RSTableViewController.m in Sources */,
 				D07CA52E18502E4E00F33C3A /* RSExpandableTableViewCell.m in Sources */,
-				D07CA534185071D700F33C3A /* UITableViewCell+HitTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +481,7 @@
 				D07CA52518502B9C00F33C3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D07CA52618502B9C00F33C3A /* Build configuration list for PBXNativeTarget "RSExpandableTableViewCellTests" */ = {
 			isa = XCConfigurationList;
@@ -489,6 +490,7 @@
 				D07CA52818502B9C00F33C3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

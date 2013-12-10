@@ -8,6 +8,12 @@
 
 #import "RSExpandableTableViewCell.h"
 
+@interface RSExpandableTableViewCell ()
+
+@property (nonatomic, strong) UIView *vvvvv;
+
+@end
+
 @implementation RSExpandableTableViewCell
 
 /**
@@ -30,6 +36,10 @@
 
 - (void)__init
 {
+    self.vvvvv = [[UIView alloc] init];
+    self.vvvvv.backgroundColor = [UIColor redColor];
+    [self addSubview:self.vvvvv];
+    
     [self addObserver:self forKeyPath:@"textLabel" options:NSKeyValueObservingOptionInitial context:NULL];
     
     [self addObserver:self forKeyPath:@"contentView" options:NSKeyValueObservingOptionInitial context:NULL];
@@ -48,9 +58,9 @@
     
     self.extendedHeight = 40.0f;
     
-    self.contentViewTransform_m34 = -1.0f / 850.0f;
-    
-    self.contentViewRotationAngle_yAxis = DegreesToRadians(10);
+//    self.contentViewTransform_m34 = -1.0f / 850.0f;
+//    
+//    self.contentViewRotationAngle_yAxis = DegreesToRadians(10);
     
     self.contentViewEdgeInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
 }
@@ -78,7 +88,9 @@
     if ([keyPath isEqualToString:@"textLabel"]) {
         self.textLabel.backgroundColor = [UIColor clearColor];
     } else if ([keyPath isEqualToString:@"contentView"]) {
-        self.contentView.layer.borderWidth = 1;
+        self.contentView.layer.borderColor = [[UIColor darkGrayColor] CGColor];
+        self.contentView.layer.borderWidth = 4.0f;
+        self.alpha = 0.6;
     }
 }
 
@@ -113,8 +125,6 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 - (void)setFrame:(CGRect)frame
@@ -124,6 +134,8 @@
     rect.origin.y += self.contentViewEdgeInsets.top;
     rect.size.height -= self.contentViewEdgeInsets.top + self.contentViewEdgeInsets.bottom - self.coveredHeight;
     rect.size.width -= self.contentViewEdgeInsets.left + self.contentViewEdgeInsets.right;
+    
+    [self.vvvvv setFrame:CGRectMake(0, 0, rect.size.width, rect.size.height - self.coveredHeight)];
     [super setFrame:rect];
 }
 
