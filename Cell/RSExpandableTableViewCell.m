@@ -10,8 +10,6 @@
 
 @interface RSExpandableTableViewCell ()
 
-@property (nonatomic, strong) UIView *vvvvv;
-
 @end
 
 @implementation RSExpandableTableViewCell
@@ -36,10 +34,6 @@
 
 - (void)__init
 {
-    self.vvvvv = [[UIView alloc] init];
-    self.vvvvv.backgroundColor = [UIColor redColor];
-    [self addSubview:self.vvvvv];
-    
     [self addObserver:self forKeyPath:@"textLabel" options:NSKeyValueObservingOptionInitial context:NULL];
     
     [self addObserver:self forKeyPath:@"contentView" options:NSKeyValueObservingOptionInitial context:NULL];
@@ -58,9 +52,9 @@
     
     self.extendedHeight = 40.0f;
     
-//    self.contentViewTransform_m34 = -1.0f / 850.0f;
-//    
-//    self.contentViewRotationAngle_yAxis = DegreesToRadians(10);
+    self.contentViewTransform_m34 = -1.0f / 850.0f;
+    
+    self.contentViewRotationAngle_yAxis = DegreesToRadians(10);
     
     self.contentViewEdgeInsets = UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f);
 }
@@ -135,7 +129,6 @@
     rect.size.height -= self.contentViewEdgeInsets.top + self.contentViewEdgeInsets.bottom - self.coveredHeight;
     rect.size.width -= self.contentViewEdgeInsets.left + self.contentViewEdgeInsets.right;
     
-    [self.vvvvv setFrame:CGRectMake(0, 0, rect.size.width, rect.size.height - self.coveredHeight)];
     [super setFrame:rect];
 }
 
